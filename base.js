@@ -44,7 +44,7 @@ module.exports = {
           "warn",
           {
             selector: "variable",
-            format: ["camelCase", "UPPER_CASE", "PascalCase", "snake_case"],
+            format: ["camelCase", "UPPER_CASE", "PascalCase"],
             leadingUnderscore: "forbid",
             trailingUnderscore: "forbid",
           },
@@ -83,7 +83,7 @@ module.exports = {
           },
           {
             selector: "memberLike",
-            format: ["camelCase", "PascalCase"],
+            format: ["camelCase", "PascalCase", "snake_case"],
             leadingUnderscore: "forbid",
             trailingUnderscore: "forbid",
           },
