@@ -44,7 +44,7 @@ module.exports = {
           "warn",
           {
             selector: "variable",
-            format: ["camelCase", "UPPER_CASE", "PascalCase"],
+            format: ["camelCase", "UPPER_CASE", "PascalCase", "snake_case"],
             leadingUnderscore: "forbid",
             trailingUnderscore: "forbid",
           },
