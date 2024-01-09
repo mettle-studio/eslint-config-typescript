@@ -1,7 +1,8 @@
 name: Node.js Package
 on:
-  create:
-    tags:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 jobs:
   build:
