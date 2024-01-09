@@ -1,6 +1,6 @@
 {
   "name": "@mettle-studio/eslint-config-typescript",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "Mettle ESLint Configuration for ts/tsx files",
   "license": "UNLICENSED",
   "author": "Mettle Studio",
