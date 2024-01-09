@@ -36,6 +36,9 @@ module.exports = {
         // Base
         // allow re-export `export { default } from './foo'`
         "no-restricted-exports": "off",
+        // TODO: review with the rest of the team
+        //I personally don't like this rule, although I can see some cases where it might be useful.
+        "@typescript-eslint/explicit-function-return-type": "off",
         // TypeScript
         "@typescript-eslint/naming-convention": [
           "warn",
