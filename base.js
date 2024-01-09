@@ -33,6 +33,11 @@ module.exports = {
     {
       files: FileMatchers.SourceFileMatchers,
       rules: {
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          { argsIgnorePattern: "^_" },
+        ],
         // Base
         // allow re-export `export { default } from './foo'`
         "no-restricted-exports": "off",
