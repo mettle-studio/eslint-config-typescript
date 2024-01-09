@@ -8,6 +8,7 @@ const makeReactConfig = (baseConfig) => {
       ...baseConfig.extends,
       "plugin:react/recommended",
       "plugin:jsx-a11y/recommended",
+      "plugin:react/jsx-runtime",
     ],
     overrides: [
       ...baseConfig.overrides,
