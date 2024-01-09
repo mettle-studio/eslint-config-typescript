@@ -1,12 +1,13 @@
-// This is a workaround for https://github.com/eslint/eslint/issues/3458
-require("@rushstack/eslint-config/patch/modern-module-resolution");
-
 const FileMatchers = require("./file-matchers");
 
 module.exports = {
   root: true,
-  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-  plugins: ["@rushstack/eslint-plugin", "@rushstack/eslint-plugin-security"],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "standard-with-typescript",
+    "plugin:prettier/recommended",
+  ],
   parserOptions: { tsconfigRootDir: __dirname, project: "./tsconfig.json" },
   settings: {
     "import/resolver": {
@@ -48,7 +49,7 @@ module.exports = {
             selector: "variable",
             types: ["boolean"],
             format: ["PascalCase", "camelCase"],
-            prefix: ["is", "should", "has", "can", "did", "will"],
+            prefix: ["is", "should", "has", "can", "did", "will", "are"],
           },
           {
             selector: "function",
