@@ -2,10 +2,6 @@
 
 ESLint Configuration for all Mettle-Studio TypeScript projects.
 
-Main configuration is based on [eslint-config-airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) and [eslint-config-airbnb-typescript](https://github.com/iamturns/eslint-config-airbnb-typescript).
-
-Check out [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) for more information.
-
 ## Usage
 
 ### Installation
