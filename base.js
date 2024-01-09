@@ -2,6 +2,7 @@ const FileMatchers = require("./file-matchers");
 
 module.exports = {
   root: true,
+  plugins: ["prettier"],
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
