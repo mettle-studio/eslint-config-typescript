@@ -1,13 +1,12 @@
 {
   "name": "@mettle-studio/eslint-config-typescript",
   "version": "0.0.1",
-  "description": "Moata ESLint Configuration for ts/tsx files",
+  "description": "Mettle ESLint Configuration for ts/tsx files",
   "license": "UNLICENSED",
-  "author": "Yurui Zhang",
+  "author": "Mettle Studio",
   "repository": {
     "type": "git",
-    "url": "git://github.com/H2knOw-how/moata-frontend-packages.git",
-    "directory": "packages/eslint-config-typescript"
+    "url": "git@github.com:mettle-studio/eslint-config-typescript.git"
   },
   "main": "index.js",
   "scripts": {
