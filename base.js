@@ -66,6 +66,20 @@ module.exports = {
             types: ['boolean'],
             format: ['PascalCase', 'camelCase'],
             prefix: ['is', 'should', 'has', 'can', 'did', 'will', 'are'],
+            filter: {
+              regex: '^_$',
+              match: false,
+            },
+          },
+          {
+            selector: 'variable',
+            types: ['boolean'],
+            format: null,
+            modifiers: ['unused'],
+            custom: {
+              regex: '^_$',
+              match: true,
+            },
           },
           {
             selector: 'function',
