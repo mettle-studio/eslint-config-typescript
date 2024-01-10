@@ -1,23 +1,33 @@
-const FileMatchers = require("./file-matchers");
+const FileMatchers = require('./file-matchers');
+const stylistic = require('@stylistic/eslint-plugin');
+
+const customized = stylistic.configs.customize({
+  // the following options are the default values
+  indent: 2,
+  quotes: 'single',
+  semi: true,
+  jsx: true,
+  // ...
+});
 
 module.exports = {
   root: true,
-  plugins: ["prettier"],
+  plugins: ['prettier', '@stylistic'],
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "standard-with-typescript",
-    "plugin:prettier/recommended",
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'standard-with-typescript',
+    'plugin:prettier/recommended',
   ],
-  parserOptions: { tsconfigRootDir: __dirname, project: "./tsconfig.json" },
+  parserOptions: { tsconfigRootDir: __dirname, project: './tsconfig.json' },
   settings: {
-    "import/resolver": {
+    'import/resolver': {
       node: {
-        extensions: [".mjs", ".js", ".jsx", ".json", ".ts", ".tsx", ".d.ts"],
+        extensions: ['.mjs', '.js', '.jsx', '.json', '.ts', '.tsx', '.d.ts'],
       },
       typescript: {
         alwaysTryTypes: true,
-        project: "./tsconfig.json",
+        project: './tsconfig.json',
       },
     },
   },
@@ -26,107 +36,97 @@ module.exports = {
     browser: true,
   },
   rules: {
-    "prettier/prettier": "warn",
+    'prettier/prettier': 'warn',
+    ...customized.rules,
   },
   overrides: [
     // base rules for all source files
     {
       files: FileMatchers.SourceFileMatchers,
       rules: {
-        "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": [
-          "error",
-          { argsIgnorePattern: "^_" },
-        ],
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
         // Base
         // allow re-export `export { default } from './foo'`
-        "no-restricted-exports": "off",
+        'no-restricted-exports': 'off',
         // TODO: review with the rest of the team
         //I personally don't like this rule, although I can see some cases where it might be useful.
-        "@typescript-eslint/explicit-function-return-type": "off",
+        '@typescript-eslint/explicit-function-return-type': 'off',
         // TypeScript
-        "@typescript-eslint/naming-convention": [
-          "warn",
+        '@typescript-eslint/naming-convention': [
+          'warn',
           {
-            selector: "variable",
-            format: ["camelCase", "UPPER_CASE", "PascalCase"],
-            leadingUnderscore: "forbid",
-            trailingUnderscore: "forbid",
+            selector: 'variable',
+            format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+            leadingUnderscore: 'forbid',
+            trailingUnderscore: 'forbid',
           },
           // patch on the above 'variable' rule
           {
-            selector: "variable",
-            types: ["boolean"],
-            format: ["PascalCase", "camelCase"],
-            prefix: ["is", "should", "has", "can", "did", "will", "are"],
+            selector: 'variable',
+            types: ['boolean'],
+            format: ['PascalCase', 'camelCase'],
+            prefix: ['is', 'should', 'has', 'can', 'did', 'will', 'are'],
           },
           {
-            selector: "function",
-            format: ["camelCase", "PascalCase"],
-            leadingUnderscore: "forbid",
-            trailingUnderscore: "forbid",
+            selector: 'function',
+            format: ['camelCase', 'PascalCase'],
+            leadingUnderscore: 'forbid',
+            trailingUnderscore: 'forbid',
           },
           {
-            selector: "parameter",
-            format: ["camelCase", "PascalCase"],
+            selector: 'parameter',
+            format: ['camelCase', 'PascalCase'],
             // placeholder parameters at the beginning of a function
-            leadingUnderscore: "allowSingleOrDouble",
-            trailingUnderscore: "forbid",
+            leadingUnderscore: 'allowSingleOrDouble',
+            trailingUnderscore: 'forbid',
           },
           {
-            selector: "typeLike",
-            format: ["PascalCase"],
+            selector: 'typeLike',
+            format: ['PascalCase'],
           },
           // patch on the above 'typeLike' rule
           {
-            selector: "interface",
-            format: ["PascalCase"],
+            selector: 'interface',
+            format: ['PascalCase'],
             custom: {
-              regex: "^I[A-Z]",
+              regex: '^I[A-Z]',
               match: false,
             },
           },
           {
-            selector: "memberLike",
-            format: ["camelCase", "PascalCase", "snake_case"],
-            leadingUnderscore: "forbid",
-            trailingUnderscore: "forbid",
+            selector: 'memberLike',
+            format: ['camelCase', 'PascalCase', 'snake_case'],
+            leadingUnderscore: 'forbid',
+            trailingUnderscore: 'forbid',
           },
           // patch on the above 'memberLike' rule
           {
-            selector: "enumMember",
-            format: ["PascalCase"],
-            leadingUnderscore: "forbid",
-            trailingUnderscore: "forbid",
+            selector: 'enumMember',
+            format: ['PascalCase'],
+            leadingUnderscore: 'forbid',
+            trailingUnderscore: 'forbid',
           },
           // patch on the above 'memberLike' rule
           {
             // relax the keys of an object literal
-            selector: ["objectLiteralProperty", "objectLiteralMethod"],
+            selector: ['objectLiteralProperty', 'objectLiteralMethod'],
             format: null,
           },
         ],
 
         // Import
         // to sort css/scss imports
-        "import/order": [
-          "error",
+        'import/order': [
+          'error',
           {
-            groups: [
-              "builtin",
-              "external",
-              "internal",
-              "parent",
-              "sibling",
-              "index",
-              "unknown",
-            ],
+            groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'unknown'],
             pathGroups: [
               {
-                pattern: "*.{css,scss}",
+                pattern: '*.{css,scss}',
                 patternOptions: { matchBase: true },
-                group: "unknown",
-                position: "after",
+                group: 'unknown',
+                position: 'after',
               },
             ],
             warnOnUnassignedImports: true,
@@ -139,7 +139,7 @@ module.exports = {
       files: FileMatchers.TypeDeclarationFileMatchers,
       rules: {
         // dev dependencies are allowed in type def files
-        "import/no-extraneous-dependencies": "off",
+        'import/no-extraneous-dependencies': 'off',
       },
     },
     // adjust base rules for test files
@@ -147,12 +147,12 @@ module.exports = {
       files: FileMatchers.TestFileMatchers,
       rules: {
         // easy to turn off TypeScript errors in test files
-        "@typescript-eslint/ban-ts-comment": "off",
+        '@typescript-eslint/ban-ts-comment': 'off',
         // allow helpers in test files without return type
-        "@typescript-eslint/explicit-function-return-type": "off",
+        '@typescript-eslint/explicit-function-return-type': 'off',
 
         // dev dependencies are allowed in test files
-        "import/no-extraneous-dependencies": "off",
+        'import/no-extraneous-dependencies': 'off',
       },
     },
     // set test rules for test files
@@ -160,7 +160,7 @@ module.exports = {
       files: FileMatchers.TestFileMatchers,
       // use Jest by default.
       // the Vitest config will replace this config by searching for `plugin:jest/recommended` in the extends array.
-      extends: ["plugin:jest/recommended"],
+      extends: ['plugin:jest/recommended'],
     },
   ],
 };
