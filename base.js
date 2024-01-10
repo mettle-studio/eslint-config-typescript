@@ -1,14 +1,5 @@
 const FileMatchers = require('./file-matchers');
-const stylistic = require('@stylistic/eslint-plugin');
-
-const customized = stylistic.configs.customize({
-  // the following options are the default values
-  indent: 2,
-  quotes: 'single',
-  semi: true,
-  jsx: true,
-  // ...
-});
+const stylisticRules = require('./stylistic');
 
 module.exports = {
   root: true,
@@ -37,7 +28,8 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'warn',
-    ...customized.rules,
+    // Stylistic
+    ...stylisticRules,
   },
   overrides: [
     // base rules for all source files
