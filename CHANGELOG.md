@@ -1,5 +1,11 @@
 # Change Log - @h2know-how/eslint-config-typescript
 
+## 0.2.1
+
+### Patch changes
+
+- Change the print width to 100 in the prettier config file
+
 ## 0.2.0
 
 ### Minor changes
